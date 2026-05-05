@@ -1,0 +1,24 @@
+{
+  "hyperparameters": {
+    "lr": 0.02,
+    "l2_reg": 0.1,
+    "n_steps": 100,
+    "ddim_steps": 30,
+    "surrogate_lr": 0.0001,
+    "surrogate_n_inner": 5
+  },
+  "validation_metrics": {
+    "score": 0.004,
+    "mean_auc": 0.1168,
+    "mean_qed": 0.5651,
+    "mean_sas": 3.2355,
+    "validity": 1.0
+  },
+  "fixed_reward_weights": {
+    "w_auc": 1.0,
+    "w_qed": 0.5,
+    "w_sas": 0.5
+  },
+  "surrogate_warmup_steps": 5,
+  "cli_args": "--lr 0.02 --l2_reg 0.1 --w_auc 1.0 --w_qed 0.5 --w_sas 0.5 --n_steps 100 --ddim_steps 30 --surrogate_lr 0.0001 --surrogate_n_inner 5"
+}
