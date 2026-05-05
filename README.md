@@ -1,7 +1,7 @@
 # GenDiff_Evidence_Opt
 **Genotype-Conditioned Molecular Generation via Evidence-Grounded Multi-Objective Latent Perturbation in Diffusion Models**
 
-> Given a tumor genotype, `GenDiff_evidence_opt` generates and optimizes drug candidates jointly for predicted sensitivity, drug-likeness, synthetic accessibility, and biologically grounded relevance — guided by a three-agent LLM pipeline and NeST pathway-aware attention.
+> Given a tumor genotype, `GenDiff_Evidence_Opt` generates and optimizes drug candidates jointly for predicted sensitivity, drug-likeness, synthetic accessibility, and biologically grounded relevance — guided by a three-agent LLM pipeline and NeST pathway-aware attention.
 
 ---
 
