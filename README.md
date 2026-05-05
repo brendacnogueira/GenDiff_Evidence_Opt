@@ -121,7 +121,18 @@ python evaluation_known_binders.py \
 ```
 
 
+### 3. Consistency Analysis
+```bash
+python llm_scorer_consistency_eval.py \
+  --diff_ckpt  ./data/model_ckpts/1229_512_adanorm_6layers_2474.ckpt \
+  --cell_data  ./data/drug_response_data/DC_drug_response.csv \
+  --drug2smi   ./data/drug_response_data/DC_drug2smi.csv \
+  --mut_data   ./data/drug_response_data/original_cell2mut.csv \
+  --cna_data   ./data/drug_response_data/original_cell2cna.csv \
+  --cnd_data   ./data/drug_response_data/original_cell2cnd.csv \
+  --n_rounds 5 --n_pairs 50 --device cuda --web_search
 
+```
 ---
 
 ## License
