@@ -39,6 +39,7 @@ GenDiff_evidence_opt/
 ├── llm_scorer.py                  # Three-agent LLM scoring pipeline
 ├── evaluation_known_binders.py    # Known binder/non-binder calibration evaluation
 ├── requirements.txt
+├── llm_consistency_eval.py
 │
 ├── src/
 ├── vae_package/
