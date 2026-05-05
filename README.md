@@ -10,7 +10,7 @@
 <!-- pipeline overview diagram -->
 <!-- ![Pipeline Overview](images/pipeline_overview.png) -->
 
-`GenDiff_evidence_opt` builds on a pretrained genotype-conditioned diffusion model to perform multi-objective latent space optimization. A three-agent LLM pipeline (Biologist Agent → Chemistry Agent → Score Agent) provides biologically grounded reward signals that steer generation toward cancer cell-line-specific therapeutic candidates.
+`GenDiff_Evidence_Opt` builds on a pretrained genotype-conditioned diffusion model to perform multi-objective latent space optimization. A three-agent LLM pipeline (Biologist Agent → Chemistry Agent → Score Agent) provides biologically grounded reward signals that steer generation toward cancer cell-line-specific therapeutic candidates.
 
 **Key contributions:**
 - Multi-objective latent optimization
