@@ -1,2 +1,128 @@
 # GenDiff_evidence_opt
-Genotype-conditioned molecular generation framework combining a diffusion-based latent space optimizer with a three-agent Agent scoring pipeline (Biologist, Chemistry, and Score agents) for cancer cell-line-specific drug discovery.
+**Genotype-Conditioned Molecular Generation via Evidence-Grounded Multi-Objective Latent Perturbation in Diffusion Models**
+
+> Given a tumor genotype, `GenDiff_evidence_opt` generates and optimizes drug candidates jointly for predicted sensitivity, drug-likeness, synthetic accessibility, and biologically grounded relevance — guided by a three-agent LLM pipeline and NeST pathway-aware attention.
+
+---
+
+## Overview
+
+<!-- pipeline overview diagram -->
+<!-- ![Pipeline Overview](images/pipeline_overview.png) -->
+
+`GenDiff_evidence_opt` builds on a pretrained genotype-conditioned diffusion model to perform multi-objective latent space optimization. A three-agent LLM pipeline (Biologist Agent → Chemistry Agent → Score Agent) provides biologically grounded reward signals that steer generation toward cancer cell-line-specific therapeutic candidates.
+
+**Key contributions:**
+- Multi-objective latent optimization: AUC + QED + SAS + LLM agent score
+- NeST adjacency-aware hybrid re-ranking of model attention for genotype-specific gene prioritization
+- Three-agent LLM scoring pipeline with NCI interaction analysis and literature retrieval
+- End-to-end pipeline from tumor genotype to scored, interpretable drug candidates
+
+---
+
+### Three-Agent Pipeline
+
+| Agent | Role |
+|-------|------|
+| **Biologist Agent** | Extracts top attention genes and enriched NeST pathways from the diffusion model for the input cell line genotype |
+| **Chemistry Agent** | Performs NCI interaction analysis against known pharmacophores, grounded in the Biologist Agent's gene targets and web-retrieved literature |
+| **Score Agent** | Synthesizes AUC prediction, descriptor-based drug-likeness, NCI overlap, and genotype exploitation rationale into a calibrated final score |
+
+---
+
+## Repository Structure
+
+```
+GenDiff_evidence_opt/
+│
+├── attention_analysis.py          # AttentionExtractor: hybrid NeST + attention re-ranking
+├── llm_scorer.py                  # Three-agent LLM scoring pipeline
+├── evaluation_known_binders.py    # Known binder/non-binder calibration evaluation
+├── requirements.txt
+│
+├── src/
+├── vae_package/
+├── data/
+|   ├──drug_response_data/
+|       ├── DC_drug_response.csv
+|       ├── DC_drug2smi.csv
+│       ├── original_cell2mut.csv  # Mutation matrix (cell lines × 718 genes)
+│       ├── original_cell2cna.csv  # Copy number amplification matrix
+│       └── original_cell2cnd.csv  # Copy number deletion matrix
+│   ├── model_ckpts/               # Pretrained model checkpoints
+│   │   ├── 1229_512_adanorm_6layers_2474.ckpt   # Diffusion model
+│   │   ├── 0104_predictor_[0-4]_*.pth            # Ensemble predictors
+│   │   └── 250_lstm09.ckpt                       # VAE
+│   ├── NeST_neighbor_adj.npy      # NeST co-membership adjacency matrix (718 × 718)
+│   ├── chemicalVAE_tokens.txt     # VAE vocabulary
+│
+├── hparam_results/
+│   └── best_hparams.json          # Best hyperparameters from tuning
+│
+└── images/                        # Figures for paper / README
+```
+
+---
+
+## Installation
+
+```bash
+git clone https://github.com/yourusername/GenDiff_evidence_opt.git
+cd GenDiff_evidence_opt
+
+conda create -n GenDiff_evidence_opt python=3.8
+conda activate GenDiff_evidence_opt
+
+pip install -r requirement.txt --extra-index-url https://download.pytorch.org/whl/cu113
+```
+
+Set your Anthropic API key:
+
+```bash
+export ANTHROPIC_API_KEY=sk-ant-...
+```
+
+---
+
+## Quick Start
+
+
+### 1. Run latent optimization on test cell lines
+
+```bash
+python test_set_latent_opt.py \
+    --diff_ckpt  ./data/model_ckpts/1229_512_adanorm_6layers_2474.ckpt \
+    --pred_ckpt  data/model_ckpts/0104_predictor_0_194.pth \
+                 data/model_ckpts/0104_predictor_1_191.pth \
+                 data/model_ckpts/0104_predictor_2_198.pth \
+                 data/model_ckpts/0104_predictor_3_185.pth \
+                 data/model_ckpts/0104_predictor_4_191.pth \
+    --mut_data   ./data/drug_response_data/original_cell2mut.csv \
+    --cna_data   ./data/drug_response_data/original_cell2cna.csv \
+    --cnd_data   ./data/drug_response_data/original_cell2cnd.csv \
+    --vae_ckpt   data/model_ckpts/250_lstm09.ckpt \
+    --vocab_path data/chemicalVAE_tokens.txt \
+    --nest_adj   ./data/NeST_neighbor_adj.npy \
+    --w_llm 1.0 --llm_every 10 --llm_score_top_n 25
+```
+
+
+
+### 2. Run known-binder calibration evaluation
+
+```bash
+python evaluation_known_binders.py \
+    --diff_ckpt  ./data/model_ckpts/1229_512_adanorm_6layers_2474.ckpt \
+    --pred_ckpt  data/model_ckpts/0104_predictor_[0-4]_*.pth \
+    --mut_data   ./data/drug_response_data/original_cell2mut.csv \
+    --cna_data   ./data/drug_response_data/original_cell2cna.csv \
+    --cnd_data   ./data/drug_response_data/original_cell2cnd.csv
+```
+
+
+
+---
+
+## License
+
+MIT License. See `LICENSE` for details.
