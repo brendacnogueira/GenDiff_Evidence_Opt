@@ -24,7 +24,7 @@
 
 | Agent | Role |
 |-------|------|
-| **Biologist Agent** | Extracts top attention genes and enriched NeST pathways from the diffusion model for the input cell line genotype |
+| **Biologist Agent** | Extracts top attention genes from the diffusion model for the input cell line genotype |
 | **Chemistry Agent** | Performs NCI interaction analysis against known pharmacophores, grounded in the Biologist Agent's gene targets and web-retrieved literature |
 | **Score Agent** | Synthesizes AUC prediction, descriptor-based drug-likeness, NCI overlap, and genotype exploitation rationale into a calibrated final score |
 
