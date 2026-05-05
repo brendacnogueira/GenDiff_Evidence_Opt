@@ -1,4 +1,4 @@
-# GenDiff_evidence_opt
+# GenDiff_Evidence_Opt
 **Genotype-Conditioned Molecular Generation via Evidence-Grounded Multi-Objective Latent Perturbation in Diffusion Models**
 
 > Given a tumor genotype, `GenDiff_evidence_opt` generates and optimizes drug candidates jointly for predicted sensitivity, drug-likeness, synthetic accessibility, and biologically grounded relevance — guided by a three-agent LLM pipeline and NeST pathway-aware attention.
@@ -33,7 +33,7 @@
 ## Repository Structure
 
 ```
-GenDiff_evidence_opt/
+GenDiff_Evidence_Opt/
 │
 ├── attention_analysis.py          # AttentionExtractor: hybrid NeST + attention re-ranking
 ├── llm_scorer.py                  # Three-agent LLM scoring pipeline
@@ -71,8 +71,8 @@ GenDiff_evidence_opt/
 git clone https://github.com/yourusername/GenDiff_evidence_opt.git
 cd GenDiff_evidence_opt
 
-conda create -n GenDiff_evidence_opt python=3.8
-conda activate GenDiff_evidence_opt
+conda create -n GenDiff_Evidence_Opt python=3.8
+conda activate GenDiff_Evidence_Opt
 
 pip install -r requirement.txt --extra-index-url https://download.pytorch.org/whl/cu113
 ```
