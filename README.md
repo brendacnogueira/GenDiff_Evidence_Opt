@@ -83,7 +83,7 @@ Set your Anthropic API key:
 export ANTHROPIC_API_KEY=sk-ant-...
 ```
 ---
-```
+
 ### Important
 
 You can download all processed datasets, model checkpoints in this google drive link.
@@ -95,9 +95,6 @@ You must unpack this zip file in the repository folder.
 -- src
 
 -- other files...
-
-```
-
 ---
 
 ## Quick Start
