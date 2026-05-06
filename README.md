@@ -62,7 +62,17 @@ GenDiff_Evidence_Opt/
 │
 └── images/                        # Figures for paper / README
 ```
+You can download all processed datasets, model checkpoints in this google drive link.
+[https://drive.google.com/file/d/1qk4Wwkqvwas7kpjcuFKbSCT8aPaP8RKI/view?usp=drive_link](https://drive.google.com/file/d/1qk4Wwkqvwas7kpjcuFKbSCT8aPaP8RKI/view?usp=drive_link)
+You must unpack this zip file in the repository folder.
 
+-- data <- Need to download from the link above.
+-- src
+-- other files...
+
+If you have any problem in downloading the data and model checkpoints, feel free to ask me by email (hyunho.kim@kito`
+
+```
 ---
 
 ## Installation
