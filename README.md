@@ -94,7 +94,7 @@ You must unpack this zip file in the repository folder.
 
 -- src
 
--- other files...
+
 ---
 
 ## Quick Start
