@@ -62,7 +62,7 @@ GenDiff_Evidence_Opt/
 │
 └── images/                        # Figures for paper / README
 
-
+```
 ---
 ---
 ### Installation
@@ -75,7 +75,7 @@ conda create -n GenDiff_Evidence_Opt python=3.8
 conda activate GenDiff_Evidence_Opt
 
 pip install -r requirement.txt --extra-index-url https://download.pytorch.org/whl/cu113
-```
+
 ---
 Set your Anthropic API key:
 
