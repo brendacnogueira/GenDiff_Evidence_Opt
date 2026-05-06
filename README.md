@@ -74,8 +74,6 @@ You must unpack this zip file in the repository folder.
 -- src
 -- other files...
 
-If you have any problem in downloading the data and model checkpoints, feel free to ask me by email (hyunho.kim@kito`
-
 ```
 ---
 
