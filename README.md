@@ -65,7 +65,7 @@ GenDiff_Evidence_Opt/
 
 ---
 
-## Installation
+### Installation
 
 ```bash
 git clone https://github.com/yourusername/GenDiff_evidence_opt.git
@@ -81,6 +81,21 @@ Set your Anthropic API key:
 
 ```bash
 export ANTHROPIC_API_KEY=sk-ant-...
+```
+---
+```
+### Important
+
+You can download all processed datasets, model checkpoints in this google drive link.
+[https://drive.google.com/file/d/1qk4Wwkqvwas7kpjcuFKbSCT8aPaP8RKI/view?usp=drive_link](https://drive.google.com/file/d/1qk4Wwkqvwas7kpjcuFKbSCT8aPaP8RKI/view?usp=drive_link)
+You must unpack this zip file in the repository folder.
+
+-- data <- Need to download from the link above.
+
+-- src
+
+-- other files...
+
 ```
 
 ---
